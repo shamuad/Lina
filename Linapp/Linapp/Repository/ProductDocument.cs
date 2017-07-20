@@ -1,15 +1,16 @@
-﻿using MongoDB.Bson;
+﻿using Linapp.Domain;
+using MongoDB.Bson;
 using System;
 
 namespace Linapp.Repository
 {
     public class ProductDocument
     {
-        public ObjectId productId { get; set; }
-        public string productCategory { get; set; }
-        public string ProductName { get; set; }
-        public string productDescription { get; set; }
-        public decimal productPrice { get; set; }
-        public DateTime productDate { get; set; }
+        public ObjectId Id { get; set; }
+        public Category Category { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public DateTime PDate { get; set; }
     }
 }

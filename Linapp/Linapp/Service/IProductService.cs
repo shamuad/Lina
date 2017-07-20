@@ -7,7 +7,6 @@ namespace Linapp.Service
     public interface IProductService
     {
         Product GetById(ObjectId id);
-        IEnumerable<Product> GetByCategory(string category);
         IEnumerable<Product> GetByName(string name);
         void Insert(Product product);
         void Update(Product product);

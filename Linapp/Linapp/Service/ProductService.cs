@@ -22,18 +22,6 @@ namespace Linapp.Service
             repository.DeleteByName(productName);
         }
 
-        public IEnumerable<Product> GetByCategory(string category)
-        {
-            productList = new List<Product>();
-
-            foreach(var item in repository.GetByCategory(category))
-            {
-                var product = new Product();
-                productList.Add(product.Load(item));
-            }
-            return productList;
-        }
-
         public Product GetById(ObjectId id)
         {
             return new Product().Load(repository.GetById(id));
@@ -58,7 +46,7 @@ namespace Linapp.Service
 
         public void EnsureProductNameIsNotUsed(Product product)
         {
-            var productFetched = repository.GetByName(product.ProductName);
+            var productFetched = repository.GetByName(product.Name);
             if (productFetched.Any())
             {
                 throw new Exception();

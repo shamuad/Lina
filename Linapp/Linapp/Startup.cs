@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Linapp.Domain;
+using Linapp.Repository;
+using Linapp.Service;
 
 namespace Linapp
 {
@@ -28,6 +31,10 @@ namespace Linapp
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddTransient<Product>();
+
             services.AddMvc();
         }
 

@@ -9,7 +9,7 @@ namespace Linapp.Repository
     public class ProductRepository : IProductRepository
     {
         private readonly IMongoCollection<ProductDocument> collection;
-        
+
 
         public ProductRepository()
         {
@@ -20,23 +20,18 @@ namespace Linapp.Repository
 
         public void DeleteByName(string productname)
         {
-            var filter = Builders<ProductDocument>.Filter.Eq(p => p.ProductName, productname);
+            var filter = Builders<ProductDocument>.Filter.Eq(p => p.Name, productname);
             collection.DeleteMany(filter);
-        }
-
-        public IEnumerable<ProductDocument> GetByCategory(string category)
-        {
-            return collection.Find(p => p.productCategory == category).ToList();
         }
 
         public ProductDocument GetById(ObjectId Id)
         {
-            return collection.Find(p => p.productId == Id).ToList().First();
+            return collection.Find(p => p.Id == Id).ToList().First();
         }
 
         public IEnumerable<ProductDocument> GetByName(string name)
         {
-            return collection.Find(p => p.ProductName == name).ToList();
+            return collection.Find(p => p.Name == name).ToList();
         }
 
         public void Insert(ProductDocument productDocument)
@@ -46,7 +41,7 @@ namespace Linapp.Repository
 
         public void Update(ProductDocument productDocument)
         {
-            var filter = Builders<ProductDocument>.Filter.Eq(p => p.productId, productDocument.productId);
+            var filter = Builders<ProductDocument>.Filter.Eq(p => p.Id, productDocument.Id);
             collection.DeleteMany(filter);
         }
     }

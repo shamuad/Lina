@@ -6,22 +6,22 @@ namespace Linapp.Domain
 {
     public class Product
     {
-        public ObjectId productId{ get; private set; } 
-        public string productCategory { get; set; }
-        public string ProductName { get; set; }
-        public string productDescription { get; set;}
-        public decimal productPrice { get; set; }
-        public DateTime productDate { get; set; }
+        public ObjectId Id { get; private set; }
+        public Category Category { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public DateTime PDate { get; set; }
 
-        public Product(string category, string name,string description, decimal price, DateTime productdate)
+        public Product(Category category, string name, string description, decimal price, DateTime productdate)
         {
 
-            productId = ObjectId.GenerateNewId();
-            productCategory = category;
-            ProductName = name;
-            productDescription = description;
-            productPrice = price;
-            productDate = productdate;
+            Id = ObjectId.GenerateNewId();
+            Category = category;
+            Name = name;
+            Description = description;
+            Price = price;
+            PDate = productdate;
         }
 
         public Product()
@@ -30,12 +30,12 @@ namespace Linapp.Domain
 
         public Product Load(ProductDocument document)
         {
-            productId = document.productId;
-            productCategory = document.productCategory;
-            ProductName = document.ProductName;
-            productDescription = document.productDescription;
-            productPrice = document.productPrice;
-            productDate = document.productDate;
+            Id = document.Id;
+            Category = document.Category;
+            Name = document.Name;
+            Description = document.Description;
+            Price = document.Price;
+            PDate = document.PDate;
 
             return this;
         }
@@ -44,12 +44,12 @@ namespace Linapp.Domain
         {
             var productDocument = new ProductDocument();
 
-            productDocument.productId = this.productId;
-            productDocument.productCategory = this.productCategory;
-            productDocument.ProductName = this.ProductName;
-            productDocument.productDescription = this.productDescription;
-            productDocument.productPrice = this.productPrice;
-            productDocument.productDate = this.productDate;
+            productDocument.Id = this.Id;
+            productDocument.Category = this.Category;
+            productDocument.Name = this.Name;
+            productDocument.Description = this.Description;
+            productDocument.Price = this.Price;
+            productDocument.PDate = this.PDate;
 
             return productDocument;
         }
